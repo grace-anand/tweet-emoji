@@ -1,9 +1,13 @@
 import { SignIn, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
+import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const user = useUser();
+
+  const { data } = api.posts.getAll.useQuery();
+  console.log("🚀 ~ file: index.tsx:10 ~ data:", data);
 
   return (
     <>
@@ -19,6 +23,14 @@ const Home: NextPage = () => {
           </h1>
         </div>
         <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+
+        <div className="content">
+          {data?.map((post) => (
+            <div className="text-white" key={post.id}>
+              {post.content}
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );

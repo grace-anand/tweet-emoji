@@ -5,6 +5,7 @@ import { api } from "~/utils/api";
 import { CreatePost } from "~/components/CreatePost";
 import Image from "next/image";
 import { PostView } from "~/components/PostCard";
+import Loader from "~/components/Loader";
 
 const Home: NextPage = () => {
   const { isSignedIn, user } = useUser();
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
   const { data, isLoading } = api.posts.getAll.useQuery();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader size="large" />;
   }
 
   if (!data) {

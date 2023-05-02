@@ -33,7 +33,7 @@ export function PostView({ post, author }: PostWithUser) {
       </CardHeader>
       <CardContent>{post.content}</CardContent>
       <CardFooter className="justify-end">
-        - {dayjs(post.createdAt).fromNow()}
+        ~ {dayjs(post.createdAt).fromNow()}
       </CardFooter>
     </Card>
   );

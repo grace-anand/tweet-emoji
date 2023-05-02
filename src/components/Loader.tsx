@@ -2,16 +2,10 @@ type Props = {
   size?: "small" | "medium" | "large";
 };
 
-const Loader = ({ size }: Props) => {
+export const Loader = ({ size }: Props) => {
   return (
     <div
       className={`
-        absolute
-        left-1/2
-        top-1/2
-        inline-block
-        -translate-x-1/2
-        -translate-y-1/2
         ${size === "small" ? "h-4 w-4" : ""}
         ${size === "medium" ? "h-6 w-6" : ""}
         ${size === "large" ? "h-8 w-8" : ""}
@@ -39,4 +33,10 @@ const Loader = ({ size }: Props) => {
   );
 };
 
-export default Loader;
+export const LoadingPage = () => {
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <Loader size="large" />
+    </div>
+  );
+};
